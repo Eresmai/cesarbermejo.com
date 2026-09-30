@@ -1,0 +1,13 @@
+# Copy this file into every project repo. Change YOUR_ORG and YOUR_GH_USER.
+# Add the platform and agent labels first. Add status:ready last.
+name: fleet
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  agent:
+    if: github.event.label.name == 'status:ready' && github.actor == 'cesarbermejom'
+    uses: Eresmai/fleet/.github/workflows/agent-run.yml@main
+    secrets: inherit
